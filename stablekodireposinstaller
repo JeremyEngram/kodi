@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Kodi repositories
+repositories=(
+    "https://team-crew.github.io/repository.thecrew-0.3.4.zip"
+    "http://grindhousekodi.tk/repo/repository.grindhousekodi-1.7.zip"
+    "http://misfitmods.com/mmwiz/repo/repository.misfitmods.zip"
+	
+    "http://cmanbuilds.com/repo/repository.cMaNWizard-2.0.zip"		#Working Repo For 19.1
+
+    "https://kepler-22.github.io/repository.innovation-1.7.zip" 	#Adult Repo 1
+    "http://sdwteam.com/wiz/repository.streamdigital-2.0.zip"   	#Adult Repo 2
+    "http://grindhousekodi.tk/repo/repository.grindhousekodi-1.7.zip"	#Adult Repo 3 Bad Boys And Naughty Girls
+    "http://streamarmy.co.uk/repo/repository.StreamArmy-13.0.006.zip"	#Adult Repo 5 XXX-O-DUS
+
+)
+
+# Install Kodi repositories
+for repo in "${repositories[@]}"; do
+    echo "Adding Kodi repository: $repo"
+    kodi_repo_name=$(basename "$repo" ".zip")
+    kodi_repo_dir="$HOME/.kodi/addons/$kodi_repo_name"
+    mkdir -p "$kodi_repo_dir"
+    wget -qO- "$repo" | tar -xvf - -C "$kodi_repo_dir"
+done
+
+# Update package lists
+sudo apt update
+
+# Install Kodi add-ons from the repositories
+sudo apt install kodi-addon-package1 kodi-addon-package2 kodi-addon-package3
+
+echo "Kodi repositories installation completed!"

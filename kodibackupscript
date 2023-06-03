@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Kodi configuration and add-ons directories
+kodi_config_dir="$HOME/.kodi"
+kodi_addons_dir="$HOME/.kodi/addons"
+
+# Backup directory
+backup_dir="$HOME/kodi_backup"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$backup_dir"
+
+# Backup Kodi configuration directory
+cp -r "$kodi_config_dir" "$backup_dir"
+
+# Backup Kodi add-ons directory
+cp -r "$kodi_addons_dir" "$backup_dir"
+
+echo "Kodi backup completed. Configuration and add-ons directories copied to $backup_dir"

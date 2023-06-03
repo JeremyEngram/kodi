@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Add Kodi repository key
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+# Add Kodi repository
+echo "deb http://mirrors.kodi.tv/debian buster main" | sudo tee /etc/apt/sources.list.d/kodi.list
+
+# Update package lists
+sudo apt update
+
+# Install Kodi
+sudo apt install kodi
+
+echo "Kodi installation completed!"
